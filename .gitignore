@@ -1,2 +1,6 @@
 /src/main/frontend/node_modules/
 /target/
+
+# Deal with Git #
+######################
+.gitconfig
