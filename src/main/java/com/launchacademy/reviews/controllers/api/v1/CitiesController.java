@@ -1,4 +1,4 @@
-package com.launchacademy.reviews.controllers;
+package com.launchacademy.reviews.controllers.api.v1;
 
 import org.springframework.web.bind.annotation.RestController;
 
