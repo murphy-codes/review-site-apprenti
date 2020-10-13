@@ -12,7 +12,6 @@ const NavBar = props => {
         <div className="top-bar-left">
           <ul className="menu">
             <li><Link to="/" className="site-title">CitYelp</Link></li>
-            <li><Link to="/cities" className="vr-left navLink">All Cities</Link></li>
             <li><Link to="/new-city" className="vr-left navLink">New City</Link></li>
           </ul>
         </div>
@@ -26,7 +25,6 @@ const NavBar = props => {
       <div className="content">
         <Switch>
           <Route exact path="/" component={CityIndexContainer} />
-          <Route exact path="/cities" component={CityIndexContainer} />
           <Route exact path="/cities/:id" component={CityShowContainer} />
           <Route render={() => <Error404 error={`Sorry, but that page doesn't exist on our site!`} />} />
         </Switch>
