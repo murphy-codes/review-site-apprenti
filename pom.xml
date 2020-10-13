@@ -16,6 +16,11 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<frontend-plugin.version>1.7.6</frontend-plugin.version>
+		<node.version>v14.0.0</node.version>
+		<yarn.version>v1.22.5</yarn.version>
 	</properties>
 
 	<dependencies>
