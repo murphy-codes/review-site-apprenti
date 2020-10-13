@@ -8,15 +8,16 @@ const CityIndexContainer = props => {
   const cityTiles = cities.map(city => {
     i++;
     return (
-      <CityTile
-        key={i}
-        id={i}
-        name={city}
-        description={'this is a city'}
-        thumbnail={'https://c1.wallpaperflare.com/preview/111/19/672/bay-area-golden-gate-bridge-golden-gate-bridge.jpg'}
-      />
-    );
-  });
+     <CityTile
+       key={i}
+       id={i}
+       name={city}
+       description={'this is a city'}
+       thumbnail={'https://c1.wallpaperflare.com/preview/111/19/672/bay-area-golden-gate-bridge-golden-gate-bridge.jpg'}
+     />
+   );
+ });
+ return null
 }
 
 export default CityIndexContainer
