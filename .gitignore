@@ -4,3 +4,4 @@
 # Deal with Git #
 ######################
 .gitconfig
+src/main/resources/application.properties
