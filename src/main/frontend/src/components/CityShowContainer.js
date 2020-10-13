@@ -1,5 +1,4 @@
 import React from "react"
-import ageToString from "../functions/ageToString.js"
 
 const CityShow = props => {
   return (
