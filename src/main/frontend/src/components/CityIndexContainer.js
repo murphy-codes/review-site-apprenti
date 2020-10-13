@@ -8,7 +8,7 @@ const CityIndexContainer = props => {
   const cityTiles = cities.map(city => {
     i++;
     return (
-      <PetTile
+      <CityTile
         key={i}
         id={i}
         name={city}
