@@ -3,8 +3,9 @@ import { Switch, Route, Link, Redirect } from "react-router-dom"
 import Error404 from "./Error404"
 import CityIndexContainer from "./CityIndexContainer"
 import CityShowContainer from "./CityShowContainer"
+import CityFormContainer from "./CityFormContainer"
 import searchButton from "../functions/searchButton.js"
-import CityForm from "./CityForm"
+
 const NavBar = props => {
   return (
     <>
@@ -25,7 +26,7 @@ const NavBar = props => {
       <div className="content">
         <Switch>
           <Route exact path="/" component={CityIndexContainer} />
-          <Route exact path="/new" component={CityForm} />
+          <Route exact path="/new" component={CityFormContainer} />
           <Route exact path="/cities/:id" component={CityShowContainer} />
           <Route render={() => <Error404 error={`Sorry, but that page doesn't exist on our site!`} />} />
         </Switch>

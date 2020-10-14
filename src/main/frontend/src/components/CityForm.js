@@ -1,43 +1,39 @@
-import React, { useState } from 'react';
-
-const CityForm = () => {
-  const [newCity, setNewCity] = useState({
+import React, { useState, useEffect } from "react"
+const CityForm = props => {
+  const emptyCity = {
     name: "",
     description: "",
-    imageUrl: ""
-  })
+    image_url: ""
+  };
 
-  const handleInputChange = (event) => {
+  const [newCity, setNewCity] = useState(emptyCity);
+
+  const handleInputChange = event => {
     setNewCity({
       ...newCity,
-      [event.target.name] : event.target.value
-    })
+      [event.currentTarget.name]: event.currentTarget.value
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.handleFormSubmission(newCity);
+    setNewCity(emptyCity);
   }
 
   const clearForm = () => {
-    setNewCity({
-      name: "",
-      description: "",
-      imageUrl: ""
-    })
-  }
-
-  const handleSubmit = () => {
-    fetch('/api/v1/cities', {
-      method: "POST",
-      body: JSON.stringify(newCity),
-      headers: {"Content-Type" : "application/json"}
-    })
+    event.preventDefault();
+    setNewCity(emptyCity);
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="form callout medium-8 cell">
-      <h2>City Form</h2>
-      <label>Name
+    <form onSubmit={handleSubmit} className="form callout medium-8 cell">
+      <h2>New City</h2>
+      <label>Name *
         <input
           type="text"
           name="name"
+          placeholder="San Francisco"
           value={newCity.name}
           onChange={handleInputChange}
         ></input>
@@ -46,6 +42,7 @@ const CityForm = () => {
         <input
           type="text"
           name="description"
+          placeholder="The golden city"
           value={newCity.description}
           onChange={handleInputChange}
         ></input>
@@ -54,17 +51,18 @@ const CityForm = () => {
         <input
           type="text"
           name="imageUrl"
+          placeholder="wiki.com/san_francisco.jpeg"
           value={newCity.imageUrl}
           onChange={handleInputChange}
         ></input>
       </label>
+      <p id="require-descriptor">* denotes a required field</p>
       <div className="button-group">
         <input className="button" type="submit" value="Submit" />
         <button className="button" id="clear-button" value="Clear Form" onClick={clearForm}>Clear</button>
       </div>
     </form>
-    </div>
-  );
-}
+  )
 
-export default CityForm;
+ }
+export default CityForm
