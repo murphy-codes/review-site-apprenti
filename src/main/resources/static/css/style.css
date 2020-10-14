@@ -34,7 +34,6 @@
   display: inline-block;
 }
 
-
 /* Error 404 */
 .error-gif {
   display: block;
@@ -212,6 +211,15 @@ input[type=submit], #clear-button {
 .city-image {
   height: 100px;
   width: 100px;
+}
+
+.soft-button {
+  transition: opacity .25s ease-in-out;
+  opacity: 0.65;
+}
+
+.soft-button:hover {
+  opacity: 1;
 }
 
 /* City show page */
