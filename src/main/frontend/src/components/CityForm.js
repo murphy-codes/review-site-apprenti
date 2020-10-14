@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+
 const CityForm = props => {
   const emptyCity = {
     name: "",
