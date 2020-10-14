@@ -3,21 +3,28 @@ import CityTile from "./CityTile"
 
 
 const CityIndexContainer = props => {
-  let cities = ['San Francisco', 'San Jose', 'Boston'];
-  let i = 0;
+  const [cities, setCities] = useState([])
+  useEffect(() => {
+    fetch('/api/v1/cities')
+    .then(result => result.json())
+    .then(cities => {
+      setCities(cities.content)
+    })
+  }, [])
   const cityTiles = cities.map(city => {
-    i++;
     return (
      <CityTile
-       key={i}
-       id={i}
-       name={city}
-       description={'this is a city'}
-       thumbnail={'https://c1.wallpaperflare.com/preview/111/19/672/bay-area-golden-gate-bridge-golden-gate-bridge.jpg'}
+      key={city.id}
+      id={city.id}
+      name={city.name}
+      description={city.description}
+      thumbnail={city.imageUrl}
      />
    );
  });
- return null
+ return (
+   cityTiles
+ )
 }
 
 export default CityIndexContainer

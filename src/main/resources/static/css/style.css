@@ -212,3 +212,8 @@ input[type=submit], #clear-button {
   margin: 0 auto 0;
   padding: 0.5em 0 0;
 }
+
+.city-image {
+  height: 100px;
+  width: 100px;
+}
