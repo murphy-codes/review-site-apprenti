@@ -208,8 +208,13 @@ input[type=submit], #clear-button {
   padding: 0.5em 0 0;
 }
 
+/* City index page */
+.city-image {
+  height: 100px;
+  width: 100px;
+}
+
 /* City show page */
 .city-img {
   height: 18.5rem;
   width: 12.5rem;
-}
