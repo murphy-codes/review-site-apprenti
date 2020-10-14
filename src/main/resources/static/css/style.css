@@ -30,6 +30,10 @@
   margin-left: 24rem;
 }
 
+.auto-margin {
+  margin: auto;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -226,8 +230,19 @@ input[type=submit], #clear-button {
 .city-img {
   height: 18.5rem;
   width: 12.5rem;
- }
+}
 
- .error {
+.error {
   color: red;
- }
+}
+
+/* City show page */
+.review-stars {
+  margin-top: -1rem;
+  text-align: left;
+  width: 10rem;
+}
+
+.review-stars i {
+  color: #B6A806;
+}

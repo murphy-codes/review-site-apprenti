@@ -5,7 +5,6 @@ import CityIndexContainer from "./CityIndexContainer"
 import CityShowContainer from "./CityShowContainer"
 import CityFormContainer from "./CityFormContainer"
 import searchButton from "../functions/searchButton.js"
-import CityForm from "./CityForm"
 
 const NavBar = props => {
   return (
