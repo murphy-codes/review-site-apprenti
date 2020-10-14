@@ -1,0 +1,9 @@
+/src/main/frontend/node_modules/
+/target/
+
+src/main/resources/application.properties
+
+# Deal with Git #
+######################
+.gitconfig
+src/main/resources/application.properties
