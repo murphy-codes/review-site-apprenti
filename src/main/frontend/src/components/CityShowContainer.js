@@ -21,7 +21,7 @@ const CityShowContainer = props => {
         setCity(content)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }, [city])
+  }, [null])
 
   if (city) {
     let cost, fun, safety;
@@ -42,6 +42,7 @@ const CityShowContainer = props => {
       <div className="row">
         <div className="small-8 small-centered columns">
           <CityShow
+            id={city.id}
             name={city.name}
             description={city.description}
             imageUrl={city.imageUrl}

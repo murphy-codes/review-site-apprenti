@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import CityForm from "./CityForm"
 
 const CityFormContainer = props => {
-  const [formSuccessMessage, setFormSuccessMessage] = useState([]); 
+  const [formSuccessMessage, setFormSuccessMessage] = useState([]);
   const handleFormSubmission = payload => {
     let fetchString = '/api/v1/cities';
     fetch(fetchString, {
@@ -29,10 +29,10 @@ const CityFormContainer = props => {
 
   if (!Array.isArray(formSuccessMessage)) {
     return (
-      <h2 className="center-text margin-top-1">{formSuccessMessage}</h2> 
+      <h2 className="center-text margin-top-1">{formSuccessMessage}</h2>
     )
   } else {
-      return <CityForm handleFormSubmission={handleFormSubmission} /> 
+      return <CityForm handleFormSubmission={handleFormSubmission} />
   }
  }
 
