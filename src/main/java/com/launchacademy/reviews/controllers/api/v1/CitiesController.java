@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,5 +55,10 @@ public class CitiesController {
   @PostMapping
   public City createReview(@RequestBody City city) {
     return cityRepo.save(city);
+  }
+
+  @DeleteMapping("/{id}")
+  public void deleteById(@PathVariable Integer id) {
+    cityRepo.deleteById(id);
   }
 }

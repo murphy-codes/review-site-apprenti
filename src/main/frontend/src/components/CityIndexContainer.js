@@ -24,6 +24,7 @@ const CityIndexContainer = props => {
  });
  return (
    cityTiles
+   
  )
 }
 
