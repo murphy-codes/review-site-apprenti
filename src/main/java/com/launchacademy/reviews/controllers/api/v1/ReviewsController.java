@@ -4,6 +4,8 @@ import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.repositories.ReviewRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -38,9 +40,9 @@ public class ReviewsController {
   }
 
   @GetMapping
-  public Iterable<Review> getAllReviews(){return reviewRepo.findAll();}
+  public Page<Review> getAllReviews(Pageable pageable){return reviewRepo.findAll(pageable);}
 
-  @PostMapping("/new")
+  @PostMapping
   public Review createReview(@Valid @RequestBody Review review) {
     return reviewRepo.save(review);
   }

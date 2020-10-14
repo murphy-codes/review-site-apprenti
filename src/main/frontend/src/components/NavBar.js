@@ -38,7 +38,7 @@ const NavBar = props => {
               <Link to="#" className="nav-drop">API</Link>
               <div className="dropup-content">
                 <Link to="/api/v1/cities">Cities</Link>
-                <Link to="/api/v1/review">Reviews</Link>
+                <Link to="/api/v1/reviews">Reviews</Link>
               </div>
             </div>
           </li>
