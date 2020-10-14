@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import Error404 from "./Error404"
 import CityShow from "./CityShow"
+import ReviewTile from "./ReviewTile"
+import ReviewForm from "./ReviewForm"
 
 const CityShowContainer = props => {
   const [city, setCity] = useState(null);
-
+  
   useEffect(() => {
     const fetchString = `/api/v1/cities/${props.match.params.id}`;
     fetch(fetchString)
@@ -19,16 +21,19 @@ const CityShowContainer = props => {
         setCity(content)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }, [])
+  }, [city])
 
   if (city) {
     let cost, fun, safety;
     cost = fun = safety = 0;
-    city.reviews.forEach(review => {
+    let reviews = city.reviews.map((review, index) => {
       cost += review.cost;
       fun += review.fun;
       safety += review.safety;
-    });
+      return (
+        <ReviewTile key={index} review={review} />
+      )
+    })
     cost /= city.reviews.length;
     fun /= city.reviews.length;
     safety /= city.reviews.length;
@@ -40,13 +45,14 @@ const CityShowContainer = props => {
             name={city.name}
             description={city.description}
             imageUrl={city.imageUrl}
-            cost={cost}
-            fun={fun}
-            safety={safety}
+            cost={cost.toFixed(2)}
+            fun={fun.toFixed(2)}
+            safety={safety.toFixed(2)}
           />
         </div>
+        <ReviewForm id={city.id} />
+        {reviews}
       </div>
-
     );
   } else { return <Error404 error={`Sorry, but that but that city doesn't exist on our site yet!'.`} /> }
 }

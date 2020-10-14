@@ -218,3 +218,8 @@ input[type=submit], #clear-button {
 .city-img {
   height: 18.5rem;
   width: 12.5rem;
+ }
+
+ .error {
+  color: red;
+ }
