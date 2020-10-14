@@ -47,9 +47,8 @@ public class CitiesController {
   }
 
   @GetMapping("/{id}")
-  public City getCityById(@PathVariable String cities, @PathVariable Integer id){
-    Optional<City> city = cityRepo.findById(id);
-    return city.orElseThrow(NotFoundException::new);
+  public City getCityById(@PathVariable Integer id){
+    return cityRepo.findById(id).orElseThrow(() -> new CitiesController.NotFoundException());
   }
 
   @PostMapping
