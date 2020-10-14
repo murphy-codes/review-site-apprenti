@@ -43,6 +43,7 @@ const CityForm = props => {
         body: JSON.stringify(newCity),
         headers: {"Content-Type" : "application/json"}
       })
+      clearForm()
     } else setErrors(formErrors)
   }
 
