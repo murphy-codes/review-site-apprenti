@@ -4,7 +4,7 @@ import Error404 from "./Error404"
 import CityIndexContainer from "./CityIndexContainer"
 import CityShowContainer from "./CityShowContainer"
 import searchButton from "../functions/searchButton.js"
-
+import CityForm from "./CityForm"
 const NavBar = props => {
   return (
     <>
@@ -12,7 +12,7 @@ const NavBar = props => {
         <div className="top-bar-left">
           <ul className="menu">
             <li><Link to="/" className="site-title">CitYelp</Link></li>
-            <li><Link to="/new-city" className="vr-left navLink">New City</Link></li>
+            <li><Link to="/new" className="vr-left navLink">New City</Link></li>
           </ul>
         </div>
         <div className="top-bar-right">
@@ -25,6 +25,7 @@ const NavBar = props => {
       <div className="content">
         <Switch>
           <Route exact path="/" component={CityIndexContainer} />
+          <Route exact path="/new" component={CityForm} />
           <Route exact path="/cities/:id" component={CityShowContainer} />
           <Route render={() => <Error404 error={`Sorry, but that page doesn't exist on our site!`} />} />
         </Switch>
