@@ -4,6 +4,8 @@ import com.launchacademy.reviews.models.City;
 import com.launchacademy.reviews.repositories.CityRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -40,8 +42,8 @@ public class CitiesController {
   }
 
   @GetMapping
-  public Iterable<City> getCityByName(){
-    return cityRepo.findAll();
+  public Page<City> getCityByName(Pageable pageable){
+    return cityRepo.findAll(pageable);
   }
 
   @GetMapping("/{id}")
@@ -50,7 +52,7 @@ public class CitiesController {
     return city.orElseThrow(NotFoundException::new);
   }
 
-  @PostMapping("/new")
+  @PostMapping
   public City createReview(@RequestBody City city) {
     return cityRepo.save(city);
   }
