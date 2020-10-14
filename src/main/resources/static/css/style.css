@@ -82,11 +82,6 @@
   margin-left: 0.5rem;
 }
 
-#adoption-story {
-  height: 4rem;
-}
-
-
 input, select, textarea {
   transition: background-color .35s ease-in-out;
 }
@@ -211,4 +206,10 @@ input[type=submit], #clear-button {
   width: 40rem;
   margin: 0 auto 0;
   padding: 0.5em 0 0;
+}
+
+/* City show page */
+.city-img {
+  height: 18.5rem;
+  width: 12.5rem;
 }
