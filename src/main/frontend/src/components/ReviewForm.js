@@ -28,13 +28,11 @@ const ReviewForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (_.isEmpty(formErrors)) {
-      fetch(`/api/v1/reviews/${props.id}`, {
-        method: "POST",
-        body: JSON.stringify(review),
-        headers: {"Content-Type" : "application/json"}
-      }) 
-    }
+    fetch(`/api/v1/reviews/${props.id}`, {
+      method: "POST",
+      body: JSON.stringify(review),
+      headers: {"Content-Type" : "application/json"}
+    })
     clearForm()
   }
 

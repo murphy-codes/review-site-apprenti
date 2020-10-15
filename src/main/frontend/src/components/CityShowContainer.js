@@ -21,7 +21,7 @@ const CityShowContainer = props => {
         setCity(content)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }, [null])
+  }, [city])
 
   if (city) {
     let cost, fun, safety;

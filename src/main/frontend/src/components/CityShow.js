@@ -1,5 +1,6 @@
 import React from "react"
 import RatingStars from "./RatingStars"
+import {useHistory} from "react-router-dom"
 
 const CityShow = props => {
   let history = useHistory()

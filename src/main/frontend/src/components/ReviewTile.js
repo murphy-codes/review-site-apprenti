@@ -5,7 +5,6 @@ const ReviewTile = (props) => {
   function roundHalf(num) {
       return Math.round(num*2)/2;
   }
-
   return (
     <div className="center-text">
       <h2 className="inline-block"> {props.review.name}</h2> - <h3 className="inline-block"> {props.review.comment}</h3><br/>
