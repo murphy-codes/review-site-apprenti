@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import _ from "lodash"
+import { useHistory } from 'react-router-dom'
 
 const CityForm = props => {
+  const history = useHistory()
   const emptyCity = {
     name: "",
     description: "",
@@ -43,6 +45,12 @@ const CityForm = props => {
         body: JSON.stringify(newCity),
         headers: {"Content-Type" : "application/json"}
       })
+      .then(result => result.json())
+      .then(city => {
+        console.log(city)
+        history.push(`/cities/${city.id}`)
+      })
+      
     } else setErrors(formErrors)
   }
 

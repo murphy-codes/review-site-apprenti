@@ -3,6 +3,7 @@ package com.launchacademy.reviews.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,7 +39,7 @@ public class City {
   private String imageUrl;
 
   @JsonIgnoreProperties("city")
-  @OneToMany(mappedBy = "city")
+  @OneToMany(mappedBy = "city", orphanRemoval = true, cascade = CascadeType.ALL)
   private List<Review> reviews = new ArrayList<>();
 
 }

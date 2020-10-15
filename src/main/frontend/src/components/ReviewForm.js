@@ -9,6 +9,10 @@ const ReviewForm = (props) => {
     comment: ""
   })
 
+  const submitForm = () => {
+    props.handleSubmit(review)
+    clearForm()
+  }
   const handleInputChange = (event) => {
     setReview({
       ...review,
@@ -26,21 +30,9 @@ const ReviewForm = (props) => {
     })
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    if (_.isEmpty(formErrors)) {
-      fetch(`/api/v1/reviews/${props.id}`, {
-        method: "POST",
-        body: JSON.stringify(review),
-        headers: {"Content-Type" : "application/json"}
-      }) 
-    }
-    clearForm()
-  }
-
   return (
     <div>
-      <form onSubmit={handleSubmit} className="form callout medium-8 cell">
+      <form onSubmit={submitForm} className="form callout medium-8 cell">
       <h2>Review Form</h2>
       <label>Name
         <input

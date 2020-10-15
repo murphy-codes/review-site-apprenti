@@ -6,7 +6,24 @@ import ReviewForm from "./ReviewForm"
 
 const CityShowContainer = props => {
   const [city, setCity] = useState(null);
+  const [reviews, setReviews] = useState([])
   
+  const handleSubmit = (event, review) => {
+    event.preventDefault()
+    fetch(`/api/v1/reviews/${props.id}`, {
+      method: "POST",
+      body: JSON.stringify(review),
+      headers: {"Content-Type" : "application/json"}
+    })
+    .then(result => result.json())
+    .then(newReview => {
+      setReviews([
+        ...reviews, review
+      ])
+    })
+    clearForm()
+  }
+
   useEffect(() => {
     const fetchString = `/api/v1/cities/${props.match.params.id}`;
     fetch(fetchString)
@@ -17,16 +34,17 @@ const CityShowContainer = props => {
           throw (error);
         }})
       .then(response => response.json())
-      .then(content => {
-        setCity(content)
+      .then(city => {
+        setCity(city)
+        setReviews(city.reviews)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }, [city])
+  }, [])
 
   if (city) {
     let cost, fun, safety;
     cost = fun = safety = 0;
-    let reviews = city.reviews.map((review, index) => {
+    let reviewElements = reviews.map((review, index) => {
       cost += review.cost;
       fun += review.fun;
       safety += review.safety;
@@ -42,6 +60,7 @@ const CityShowContainer = props => {
       <div className="row">
         <div className="small-8 small-centered columns">
           <CityShow
+            id={city.id}
             name={city.name}
             description={city.description}
             imageUrl={city.imageUrl}
@@ -50,8 +69,8 @@ const CityShowContainer = props => {
             safety={safety.toFixed(2)}
           />
         </div>
-        <ReviewForm id={city.id} />
-        {reviews}
+        <ReviewForm handleSubmit={handleSubmit} id={city.id} />
+        {reviewElements}
       </div>
     );
   } else { return <Error404 error={`Sorry, but that but that city doesn't exist on our site yet!'.`} /> }
