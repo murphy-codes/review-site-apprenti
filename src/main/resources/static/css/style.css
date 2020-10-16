@@ -226,6 +226,12 @@ input[type=submit], #clear-button {
   opacity: 1;
 }
 
+/* Loading */
+.loading-fetch {
+  font-size: 0.5rem;
+  color: #d0cece;
+}
+
 /* City show page */
 .city-img {
   height: 18.5rem;
@@ -236,7 +242,7 @@ input[type=submit], #clear-button {
   color: red;
 }
 
-/* City show page */
+/* Review stars */
 .review-stars {
   margin-top: -1rem;
   text-align: left;
