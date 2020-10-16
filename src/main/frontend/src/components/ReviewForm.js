@@ -9,17 +9,6 @@ const ReviewForm = (props) => {
     comment: ""
   })
 
-  const submitForm = () => {
-    props.handleSubmit(review)
-    clearForm()
-  }
-  const handleInputChange = (event) => {
-    setReview({
-      ...review,
-      [event.target.name] : event.target.value
-    })
-  }
-
   const clearForm = () => {
     setReview({
       name: "",
@@ -27,6 +16,18 @@ const ReviewForm = (props) => {
       fun: "",
       safety: "",
       comment: ""
+    })
+  }
+
+  const submitForm = (event) => {
+    props.handleSubmit(event, review)
+    clearForm()
+  }
+
+  const handleInputChange = (event) => {
+    setReview({
+      ...review,
+      [event.target.name] : event.target.value
     })
   }
 
