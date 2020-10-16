@@ -7,6 +7,7 @@ import ReviewForm from "./ReviewForm"
 const CityShowContainer = props => {
   const [city, setCity] = useState(null);
   const [reviews, setReviews] = useState([])
+  const [fetchError, setFetchError] = useState(false)
   
   const handleSubmit = (event, review) => {
     event.preventDefault()
@@ -37,10 +38,15 @@ const CityShowContainer = props => {
         setCity(city)
         setReviews(city.reviews)
       })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+      .catch(error => {
+        console.error(`Error in fetch: ${error.message}`)
+        setFetchError(true)
+      });
   }, [])
 
-  if (city) {
+  if (fetchError) { return <Error404 error={`Sorry, but that but that city doesn't exist on our site yet!`} /> }
+  else if (!city) { return <p className="loading-fetch center-text"> Loading </p> }
+  else {
     let cost, fun, safety;
     cost = fun = safety = 0;
     let reviewElements = reviews.map((review, index) => {
@@ -70,8 +76,7 @@ const CityShowContainer = props => {
         </div>
         <ReviewForm handleSubmit={handleSubmit} id={city.id} />
         {reviewElements}
-      </div>
-    );
-  } else { return <Error404 error={`Sorry, but that but that city doesn't exist on our site yet!'.`} /> }
+      </div>    );
+  }
 }
 export default CityShowContainer
