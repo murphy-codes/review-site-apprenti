@@ -10,7 +10,7 @@ const CityShowContainer = props => {
   
   const handleSubmit = (event, review) => {
     event.preventDefault()
-    fetch(`/api/v1/reviews/${props.id}`, {
+    fetch(`/api/v1/reviews/${city.id}`, {
       method: "POST",
       body: JSON.stringify(review),
       headers: {"Content-Type" : "application/json"}
@@ -21,7 +21,6 @@ const CityShowContainer = props => {
         ...reviews, review
       ])
     })
-    clearForm()
   }
 
   useEffect(() => {
@@ -45,17 +44,17 @@ const CityShowContainer = props => {
     let cost, fun, safety;
     cost = fun = safety = 0;
     let reviewElements = reviews.map((review, index) => {
-      cost += review.cost;
-      fun += review.fun;
-      safety += review.safety;
+      cost += parseInt(review.cost);
+      fun += parseInt(review.fun);
+      safety += parseInt(review.safety);
       return (
         <ReviewTile key={index} review={review} />
       )
     })
-    cost /= city.reviews.length;
-    fun /= city.reviews.length;
-    safety /= city.reviews.length;
-
+    cost /= reviews.length;
+    fun /= reviews.length;
+    safety /= reviews.length;
+    
     return (
       <div className="row">
         <div className="small-8 small-centered columns">

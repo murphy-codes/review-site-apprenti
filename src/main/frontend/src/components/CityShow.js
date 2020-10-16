@@ -22,6 +22,7 @@ const CityShow = props => {
         <span>Fun: </span><RatingStars rating={props.fun}/><br/>
         <span>Safety: </span><RatingStars rating={props.safety}/>
       </div>
+      <button onClick={deleteCity} className="button">Delete</button>
     </div>
   )
 }
