@@ -268,6 +268,11 @@ input[type=submit], #clear-button {
   float: left;
 }
 
+.rating-num {
+  font-size: 0.875rem;
+  opacity: 0.25;
+}
+
 .review-form-sliders {
   width: 90%;
 }
@@ -280,7 +285,7 @@ input[type=submit], #clear-button {
 .review-stars {
   margin-top: -1rem;
   text-align: left;
-  width: 10rem;
+  width: 15rem;
 }
 
 .review-stars i {
