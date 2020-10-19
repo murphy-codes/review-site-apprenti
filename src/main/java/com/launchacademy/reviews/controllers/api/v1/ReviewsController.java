@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/reviews")
 public class ReviewsController {
+
   private ReviewRepository reviewRepo;
   private CityRepository cityRepo;
 
@@ -32,26 +34,35 @@ public class ReviewsController {
   @ControllerAdvice
   private class NotFoundAdvice {
     @ResponseBody
-    @ExceptionHandler(ReviewsController .NotFoundException.class)
+    @ExceptionHandler(ReviewsController.NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String NotFoundHandler(ReviewsController .NotFoundException exception) {
+    String NotFoundHandler(ReviewsController.NotFoundException exception) {
       return exception.getMessage();
     }
   }
 
   @Autowired
-  public ReviewsController(ReviewRepository reviewRepo, CityRepository cityRepo){
+  public ReviewsController(ReviewRepository reviewRepo, CityRepository cityRepo) {
     this.cityRepo = cityRepo;
     this.reviewRepo = reviewRepo;
   }
 
   @GetMapping
-  public Page<Review> getAllReviews(Pageable pageable){return reviewRepo.findAll(pageable);}
+  public Page<Review> getAllReviews(Pageable pageable) {
+    return reviewRepo.findAll(pageable);
+  }
 
   @PostMapping("/{cityId}")
   public Review createReview(@Valid @RequestBody Review review, @PathVariable Integer cityId) {
     Optional<City> city = cityRepo.findById(cityId);
     review.setCity(city.get());
+    return reviewRepo.save(review);
+  }
+
+  @PutMapping
+  public Review voteReview(@Valid @RequestBody Review update) {
+    Review review = reviewRepo.findById(update.getId()).get();
+    review.setVotes(update.getVotes());
     return reviewRepo.save(review);
   }
 }
