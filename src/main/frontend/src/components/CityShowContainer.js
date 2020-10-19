@@ -76,7 +76,8 @@ const CityShowContainer = props => {
         </div>
         <ReviewForm handleSubmit={handleSubmit} id={city.id} />
         {reviewElements}
-      </div>    );
+      </div>
+    );
   }
 }
 export default CityShowContainer
