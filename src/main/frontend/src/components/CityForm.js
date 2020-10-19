@@ -47,7 +47,6 @@ const CityForm = props => {
       })
       .then(result => result.json())
       .then(city => {
-        console.log(city)
         history.push(`/cities/${city.id}`)
       })
       
