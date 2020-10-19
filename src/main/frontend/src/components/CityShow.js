@@ -22,9 +22,9 @@ const CityShow = props => {
           <br/>{props.description ? (<p>Description: {props.description}</p>) : ""}
           {isNaN(props.cost) ? "" : (
             <div className="margin-left-2 review-stars inline-block">
-              <span>Cost: </span><RatingStars rating={props.cost}/><br/>
-              <span>Fun: </span><RatingStars rating={props.fun}/><br/>
-              <span>Safety: </span><RatingStars rating={props.safety}/>
+              <span>Cost: </span><RatingStars rating={props.cost}/> <span className="rating-num">({props.cost})</span><br/>
+              <span>Fun: </span><RatingStars rating={props.fun}/> <span className="rating-num">({props.fun})</span><br/>
+              <span>Safety: </span><RatingStars rating={props.safety}/> <span className="rating-num">({props.safety})</span>
             </div>
           )}
           <br/><button onClick={deleteCity} className="button">Delete</button>

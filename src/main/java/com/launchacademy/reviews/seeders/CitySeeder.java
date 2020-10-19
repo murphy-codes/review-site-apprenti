@@ -9,9 +9,9 @@ import java.util.List;
 @Component
 public class CitySeeder {
   public void seed(CityRepository cityRepository) {
-    List<String> nameList = Arrays.asList("San Francisco","San Jose","Boston");
-    List<String> descriptionList = Arrays.asList("The Golden City", "Small Town Heart. Big City Soul.", "Sicut Patribus, Sit Deus Nobis");
-    List<String> imgUrlList = Arrays.asList("https://upload.wikimedia.org/wikipedia/commons/f/f6/Golden_Gate_Bridge_and_San_Francisco_at_sunset.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/San_Jose_Marriott_Hotel.jpg/400px-San_Jose_Marriott_Hotel.jpg","https://live.staticflickr.com/5344/6969795530_9e00977b02_b.jpg");
+    List<String> nameList = Arrays.asList("San Francisco", "San Jose", "Boston", "Palo Alto", "Milpitas", "Eureka");
+    List<String> descriptionList = Arrays.asList("The Golden City", "Small Town Heart. Big City Soul.", "Sicut Patribus, Sit Deus Nobis", "The heart of  Silicon Valley", "As Milpitas Goes, So Goes the State", "I've found it!");
+    List<String> imgUrlList = Arrays.asList("/img/San-Francisco.jpg", "/img/San-Jose.jpg", "/img/Boston.jpg", "/img/Palo-Alto.jpg", "/img/Milpitas.jpg", "/img/Eureka.jpg");
 
     for (int i = 0; i < nameList.size(); i++) {
       if(!cityRepository.existsByName(nameList.get(i))) {
