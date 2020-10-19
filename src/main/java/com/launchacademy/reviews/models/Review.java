@@ -53,4 +53,67 @@ public class Review {
   @JsonIgnoreProperties("reviews")
   private City city;
   public void setCity(City city) { this.city = city; }
+
+  @Column(name = "votes")
+  private Integer votes;
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Integer getCost() {
+    return cost;
+  }
+
+  public void setCost(Integer cost) {
+    this.cost = cost;
+  }
+
+  public Integer getFun() {
+    return fun;
+  }
+
+  public void setFun(Integer fun) {
+    this.fun = fun;
+  }
+
+  public Integer getSafety() {
+    return safety;
+  }
+
+  public void setSafety(Integer safety) {
+    this.safety = safety;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
+  public City getCity() {
+    return city;
+  }
+
+  public Integer getVotes() {
+    return votes;
+  }
+
+  public void setVotes(Integer votes) {
+    this.votes = votes;
+  }
 }

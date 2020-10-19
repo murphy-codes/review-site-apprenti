@@ -54,8 +54,8 @@ const CityShowContainer = props => {
       fun += parseInt(review.fun);
       safety += parseInt(review.safety);
       return (
-        <ReviewTile key={index} review={review} />
-      )
+        <ReviewTile key={index} review={review} setReviews={setReviews} reviews={reviews} index={index}/>
+        )
     })
     cost /= reviews.length;
     fun /= reviews.length;
