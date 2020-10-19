@@ -29,15 +29,10 @@ public class ReviewsController {
   private ReviewRepository reviewRepo;
   private CityRepository cityRepo;
 
-  private class NotFoundException extends RuntimeException {
-
-  }
-
-  ;
+  private class NotFoundException extends RuntimeException {};
 
   @ControllerAdvice
   private class NotFoundAdvice {
-
     @ResponseBody
     @ExceptionHandler(ReviewsController.NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
