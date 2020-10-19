@@ -15,14 +15,18 @@ const CityShow = props => {
   return (
     <div className="city-show row">
       <h2>{props.name}</h2>
-      <img src={props.imageUrl} alt={props.name} className="city-img" />
-      <p><br/>Description: {props.description}</p>
-      <div className="margin-left-2 review-stars">
-        <span>Cost: </span><RatingStars rating={props.cost}/><br/>
-        <span>Fun: </span><RatingStars rating={props.fun}/><br/>
-        <span>Safety: </span><RatingStars rating={props.safety}/>
+      <div className="clearfix">
+        <img src={props.imageUrl} alt={props.name} className="city-show-img float-left" />
+        <div className="city-show-text">
+          <br/><p>Description: {props.description}</p>
+          <div className="margin-left-2 review-stars inline-block">
+            <span>Cost: </span><RatingStars rating={props.cost}/><br/>
+            <span>Fun: </span><RatingStars rating={props.fun}/><br/>
+            <span>Safety: </span><RatingStars rating={props.safety}/>
+          </div>
+          <br/><button onClick={deleteCity} className="button">Delete</button>
+        </div>
       </div>
-      <button onClick={deleteCity} className="button">Delete</button>
     </div>
   )
 }
