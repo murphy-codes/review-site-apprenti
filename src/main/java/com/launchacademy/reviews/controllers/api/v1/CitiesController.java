@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/cities")
+@RequestMapping("/api/v1")
 public class CitiesController {
   private CityRepository cityRepo;
 
@@ -42,22 +42,27 @@ public class CitiesController {
     this.cityRepo = cityRepo;
   }
 
-  @GetMapping
-  public Page<City> getCityByName(Pageable pageable){
+  @GetMapping("/cities")
+  public Page<City> getCities(Pageable pageable){
     return cityRepo.findAll(pageable);
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/cities/{id}")
   public City getCityById(@PathVariable Integer id){
     return cityRepo.findById(id).orElseThrow(() -> new CitiesController.NotFoundException());
   }
 
-  @PostMapping
+  @GetMapping("/search/cities/{searchTerm}")
+  public Page<City> getCityBySearch(@PathVariable String searchTerm, Pageable pageable){
+    return cityRepo.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(searchTerm, searchTerm, pageable);
+  }
+
+  @PostMapping("/cities")
   public City createReview(@RequestBody City city) {
     return cityRepo.save(city);
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/cities/{id}")
   public void deleteById(@PathVariable Integer id) {
     cityRepo.deleteById(id);
   }
