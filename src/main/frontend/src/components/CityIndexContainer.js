@@ -8,13 +8,14 @@ const CityIndexContainer = props => {
 
   const [cities, setCities] = useState([])
   useEffect(() => {
-    fetch(`api/v1/cities?size=${size}&page=${page}`)
+    const fetchString = !props.match.params.searchTerm ? `api/v1/cities?size=${size}&page=${page}` : `/api/v1/search/cities/${props.match.params.searchTerm}?size=${size}&page=${page}`;
+    fetch(fetchString)
     .then(result => result.json())
     .then(cities => {
       setLast(cities.last)
       setCities(cities.content)
     })
-  }, [page,size])
+  }, [page,size,props.match.params.searchTerm])
 
   const cityTiles = cities.map(city => {
     return (
