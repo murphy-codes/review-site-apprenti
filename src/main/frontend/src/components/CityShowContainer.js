@@ -36,7 +36,7 @@ const CityShowContainer = props => {
       .then(response => response.json())
       .then(city => {
         setCity(city)
-        setReviews(city.reviews)
+        setReviews(city.reviews.sort((x,y) => (x.votes > y.votes) ? -1: 1))
       })
       .catch(error => {
         console.error(`Error in fetch: ${error.message}`)
@@ -44,8 +44,8 @@ const CityShowContainer = props => {
       });
   }, [])
 
-  if (fetchError) { return <Error404 error={`Sorry, but that but that city doesn't exist on our site yet!`} /> }
-  else if (!city) { return <p className="loading-fetch center-text"> Loading </p> }
+  if (fetchError) return <Error404 error={`Sorry, but that but that city doesn't exist on our site yet!`} />
+  else if (!city) return <p className="loading-fetch center-text"> Loading </p>
   else {
     let cost, fun, safety;
     cost = fun = safety = 0;
