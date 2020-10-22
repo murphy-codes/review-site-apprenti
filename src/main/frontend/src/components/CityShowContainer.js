@@ -19,8 +19,9 @@ const CityShowContainer = props => {
     .then(result => result.json())
     .then(newReview => {
       setReviews([
-        ...reviews, review
+        ...reviews, newReview
       ])
+
     })
   }
 
