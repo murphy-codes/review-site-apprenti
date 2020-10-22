@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 const SearchBar = props => {
   const history = useHistory()
-  const searchButton = () => { history.push(`/search/${document.getElementById('search-bar').value}`); }
+  const searchButton = () => { if (document.getElementById('search-bar').value.trim().length > 0) { history.push(`/search/${document.getElementById('search-bar').value}`); } }
   const handleEnter = (e) => { if (e.key === 'Enter') { searchButton(); } }
 
   return (
