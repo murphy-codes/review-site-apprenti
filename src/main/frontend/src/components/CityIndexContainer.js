@@ -45,18 +45,18 @@ const CityIndexContainer = props => {
   }
 
   const handleSizeChange = (event) => {
-   setSize(event.target.value);
-   setPage(0);
+    setSize(event.target.value);
+    setPage(0);
   }
 
   const prev = () => {
-   event.preventDefault();
-   setPage(page-1);
+    event.preventDefault();
+    setPage(page-1);
   }
 
   const next = () => {
-   event.preventDefault();
-   setPage(page+1);
+    event.preventDefault();
+    setPage(page+1);
   }
 
   let prevButton = page != 0 ? (<a href="#" onClick={prev}><i className="fas fa-angle-double-left soft-button"></i></a>) : null;
