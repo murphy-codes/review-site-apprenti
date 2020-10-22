@@ -94,6 +94,5 @@ const CityForm = props => {
     </form>
   </div>
   )
-
  }
 export default CityForm
