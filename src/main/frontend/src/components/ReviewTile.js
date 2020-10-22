@@ -23,8 +23,8 @@ const ReviewTile = (props) => {
   }
 
   function downvote() {
-      props.review.votes -= 1
-      updateReview()
+    props.review.votes -= 1
+    updateReview()
   }
 
   return (
@@ -36,8 +36,8 @@ const ReviewTile = (props) => {
         <span>Fun: </span><RatingStars rating={props.review.fun}/><br/>
         <span>Safety: </span><RatingStars rating={props.review.safety}/>
       </div>
-      <button className = "button" onClick = {upvote}> Upvote </button>
-      <button className = "button" onClick = {downvote}> Downvote </button>
+      <button className="button upvote" onClick={upvote}><i class="fas fa-arrow-up"></i></button>
+      <button className="button downvote" onClick={downvote}><i class="fas fa-arrow-down"></i></button>
     </div>
   );
 }

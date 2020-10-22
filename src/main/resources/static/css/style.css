@@ -304,7 +304,29 @@ input[type=submit], #clear-button {
   color: red;
 }
 
-/* Review stars */
+/* Reviews */
+.upvote, .downvote {
+  color: white;
+  padding: 0.25rem;
+}
+
+.upvote {
+  background-color: #069401;
+}
+
+.upvote:hover, .upvote:active, .upvote:focus {
+  background-color: #077a02;
+}
+
+.downvote {
+  background-color: #a60303;
+  margin-left: 1px;
+}
+
+.downvote:hover, .downvote:active, .downvote:focus {
+  background-color: #700202;
+}
+
 .review-stars {
   margin-top: -1rem;
   text-align: left;
