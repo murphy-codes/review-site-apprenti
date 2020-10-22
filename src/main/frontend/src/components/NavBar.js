@@ -13,7 +13,7 @@ const NavBar = props => {
         <div className="top-bar-left">
           <ul className="menu">
             <li><Link to="/" className="site-title">CitYelp</Link></li>
-            <li><Link to="/new" className="vr-left navLink">New City</Link></li>
+            <li><Link to="/new" className="vr-left navLink">Add a City</Link></li>
           </ul>
         </div>
         <SearchBar />
